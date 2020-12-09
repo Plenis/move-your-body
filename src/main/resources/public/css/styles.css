@@ -1,26 +1,23 @@
-.intro-2 {
-    background: url("https://mdbootstrap.com/img/Photos/Others/img (42).jpg")no-repeat center center;
-    background-size: cover;
-}
-.view {
-    margin-top: -56px;
-}
-.navbar {
-    z-index: 1;
-    background-color: transparent;
+.T{
+    font-size: larger;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    width: 50%;
 }
 
-.top-nav-collapse {
-    background-color: #4285F4;
+.I {
+    width: 50%;
 }
-@media only screen and (max-width: 768px) {
-    .navbar {
-        background-color: #4285F4;
-    }
+table {
+    border-collapse: collapse;
 }
-html,
-body,
-header,
-.view {
-    height: 100%;
+
+.SS {
+    font-size: x-large;
+    font-weight: 1000;
+    font-family: Comic Sans MS;
+}
+
+.CD {
+    font-weight: normal;
+    font-size: initial;
 }
