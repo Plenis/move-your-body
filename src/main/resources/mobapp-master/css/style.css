@@ -495,11 +495,11 @@ header {
 
 /*  IMAGE GALLERY
 ----------------------*/
- /*.perspective{
-width:2em;
-height:5em;
+ .perspective{
+width:500px;
+height:400px;
 
-}*/
+}
 
 
 
