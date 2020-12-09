@@ -50,14 +50,15 @@ body {
             <div class="row">
                 <div class="col-md-12">
                     <nav class="navbar navbar-dark navbar-expand-lg">
-                        <a class="navbar-brand" href="index.html"><img src="images/logo.png" class="img-fluid" alt="logo"></a> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+<!--                        <a class="navbar-brand" href="index.html"><img src="images/logo.png" class="img-fluid" alt="logo"></a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>-->
                         <div class="collapse navbar-collapse" id="navbar">
                             <ul class="navbar-nav ml-auto">
                                 <li class="nav-item"> <a class="nav-link active" href="#home">HOME <span class="sr-only">(current)</span></a> </li>
                                 <li class="nav-item"> <a class="nav-link" href="#features">EXERCISES</a> </li>
                                 <li class="nav-item"> <a class="nav-link" href="#gallery">PROGRESS</a> </li>
                                 <li class="nav-item"> <a class="nav-link" href="#contact">CONTACT</a> </li>
-                                <li class="nav-item"><a href="#" class="btn btn-outline-light my-3 my-sm-0 ml-lg-3">Download</a></li>
+<!--                                <li class="nav-item"><a href="#" class="btn btn-outline-light my-3 my-sm-0 ml-lg-3">Download</a></li>-->
                             </ul>
                         </div>
                     </nav>
@@ -72,6 +73,11 @@ body {
             <h1>Move Your Body</h1>
             <p class="tagline">Losing weight isn't easy - we know. But with a membership to Move Your Body you'll get the tools you need to successfully take weight off - and keep it off. And best of all, you can signup for free, no strings attached. So put away your credit card - you'll never have to pay a cent. </p>
         </div>
+        <br></div>
+        <div>
+            <span id="result"></span>
+            <button href="#" class = "btn btn-primary" >Get Started</button>
+        </div>
         <div class="img-holder mt-3"><img src="images/iphonex.png" alt="phone" class="img-fluid"></div>
     </header>
 
@@ -80,37 +86,46 @@ body {
 
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 offset-lg-6">
+                <div class="col-6">
+                <img src="images/perspective.png" alt="perspective phone" class="perspective">
+                </div>
+                <div class="col-6">
                   <!--  <div class="box-icon"><span class="ti-mobile gradient-fill ti-3x"></span></div> -->
                     <h2>Participant Information</h2>
+
                     <p class="mb-4"><div class="testbox">
-                        <form>
+                        <form class="form-control">
                             <br/>
                             <fieldset>
                                 <legend></legend>
                     <p></p>
                     <div class="item">
-                        <label for="fname"> First Name<span>*</span></label>
-                        <input id="fname" type="text" name="fname" />
+<!--                        <label for="fname"> First Name<span>*</span></label>-->
+                        <input id="fname" type="text" class="form-control" placeholder="First Name"   name="fname" />
                     </div>
                     <div class="item">
-                        <label for="activity">Last Name<span>*</span></label>
-                        <input id="activity" type="text" name="activity" />
+<!--                        <label for="activity">Last Name<span>*</span></label> -->
+                        <input id="activity" type="text" class="form-control" placeholder="Last Name" name="activity" />
                     </div>
                     <div class="item">
-                        <label for="fee">Weight(in kg)<span>*</span></label>
-                        <input id="fee" type="number" name="fee" />
+<!--                        <label for="fee">Weight(in kg)<span>*</span></label>-->
+                        <input id="fee" type="number" class="form-control" placeholder="Weight(in kg)" name="fee" />
                     </div>
                     <div class="item">
-                        <label for="fee">Height(in cm)<span>*</span></label>
-                        <input id="fee" type="number" name="fee" />
+<!--                        <label for="fee">Height(in cm)<span>*</span></label>-->
+                        <input id="fee" type="number" class="form-control" placeholder="Height(in cm)" name="fee" />
                     </div>
                     <div class="item">
-                        <label for="bdate">Birth Date <span>*</span></label>
-                        <input id="bdate" type="date" name="bdate" />
+<!--                        <label for="bdate">Birth Date <span>*</span></label>-->
+                        <input id="bdate" type="date" class="form-control" placeholder="Birth Date" name="bdate" />
                         <i class="fas fa-calendar-alt"></i>
+                        <div>
+                            <br>
+                            <span id="result"></span>
+                            <button href="#" class = "btn btn-primary" >Submit</button>
+                        </div>
                     </div>
-                    <div class="item">
+                   <!-- <div class="item">
                         <p>Activity</p>
                         <select>
                             <option selected value="" disabled selected></option>
@@ -119,12 +134,9 @@ body {
                             <option value="3">Star Jumps</option>
 
                         </select>
-                    </div>
+                    </div> -->
                     <br> </div>
-                    <div>
-                        <span id="result"></span>
-                        <button href="#" class = "btn btn-primary" >Calculate</button>
-                    </div>
+
                     </fieldset>
                     <br/>
 
@@ -144,7 +156,7 @@ body {
 
     </div>
     <!-- // end .section -->
-    <!--
+<!--
     <div class="section light-bg">
         <div class="container">
             <div class="section-title">
@@ -181,7 +193,7 @@ body {
                                 sed tempor malesuada, sem nunc porta augue, in dictum arcu tortor id turpis. Proin aliquet vulputate aliquam.
                             </p>
                         </div>
-                    </div>
+                    </divHeight(in cm)>
                 </div>
                 <div class="tab-pane fade" id="schedule">
                     <div class="d-flex flex-column flex-lg-row">
@@ -232,31 +244,40 @@ body {
 
 
         </div>
-    </div>
-    // end .section
+    </div>-->
+<!--    // end .section-->
 
     <div class="section">
 
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <img src="images/dualphone.png" alt="dual phone" class="img-fluid">
+<!--                    <img src="images/dualphone.png" alt="dual phone" class="img-fluid">-->
                 </div>
                 <div class="col-md-6 d-flex align-items-center">
                     <div>
-                        <div class="box-icon"><span class="ti-rocket gradient-fill ti-3x"></span></div>
-                        <h2>Launch your App</h2>
-                        <p class="mb-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati vel exercitationem eveniet vero maxime ratione </p>
-                        <a href="#" class="btn btn-primary">Read more</a></div>
+<!--                        <div class="box-icon"><span class="ti-rocket gradient-fill ti-3x"></span></div>-->
+                        <h2>Start Moving</h2>
+                        <p class="mb-4"> Please record a video of the exercise you would like to complete and select "Finish" when you're done!
+
+
+
+
+
+
+
+
+                        </p>
+                        <a href="#" class="btn btn-primary">Finish</a></div>
                 </div>
             </div>
 
         </div>
 
     </div>
-     // end .section
+<!--     // end .section-->
 
-
+<!--
     <div class="section light-bg">
 
         <div class="container">
