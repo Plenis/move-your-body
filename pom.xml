@@ -26,7 +26,7 @@
                 <version>2.0.13</version>
                 <configuration>
                     <processTypes>
-                        <web>java $JAVA_OPTS -cp target/classes:target/dependency/* net.webapp.App</web>
+                        <web>java $JAVA_OPTS -cp target/classes:target/dependency/* net.webApp.App</web>
                     </processTypes>
                 </configuration>
             </plugin>
@@ -70,4 +70,6 @@
             <version>42.2.14</version>
         </dependency>
     </dependencies>
+
+    
 </project>
