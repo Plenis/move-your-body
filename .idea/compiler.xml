@@ -8,7 +8,6 @@
         <outputRelativeToContentRoot value="true" />
         <module name="move-your-body" />
         <module name="MoveYourBody" />
-        <module name="move-your-body" />
       </profile>
     </annotationProcessing>
   </component>
