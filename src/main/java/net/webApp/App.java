@@ -56,7 +56,7 @@ public class App {
 
             get("/", (request, response) -> {
 
-                return new ModelAndView(player, "welcome.handlebars");
+                return new ModelAndView(player, "index.handlebars");
 
             }, new HandlebarsTemplateEngine());
 
