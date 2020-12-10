@@ -29,40 +29,12 @@
                 <version>2.0.13</version>
                 <configuration>
                     <processTypes>
-                        <web>java $JAVA_OPTS -cp target/classes:target/dependency/* net.webApp.App</web>
+                        <web>java $JAVA_OPTS -cp target/classes:target/dependency/* net.webapp.App</web>
                     </processTypes>
                 </configuration>
             </plugin>
         </plugins>
     </build>
-
-<!--    <build>-->
-<!--        <plugins>-->
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-surefire-plugin</artifactId>-->
-<!--                <version>2.22.1</version>-->
-<!--            </plugin>-->
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-compiler-plugin</artifactId>-->
-<!--                <configuration>-->
-<!--                    <source>1.8</source>-->
-<!--                    <target>1.8</target>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
-<!--            <plugin>-->
-<!--                <groupId>com.heroku.sdk</groupId>-->
-<!--                <artifactId>heroku-maven-plugin</artifactId>-->
-<!--                <version>2.0.13</version>-->
-<!--                <configuration>-->
-<!--                    <processTypes>-->
-<!--                        <web>java $JAVA_OPTS -cp target/classes:target/dependency/* net.school.App</web>-->
-<!--                    </processTypes>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
-<!--        </plugins>-->
-<!--    </build>-->
 
     <dependencies>
         <dependency>
@@ -120,12 +92,7 @@
         </dependency>
     </dependencies>
 
-<<<<<<< HEAD
-    
-=======
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-
->>>>>>> thando_working_services
 </project>
