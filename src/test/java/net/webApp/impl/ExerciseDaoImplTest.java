@@ -84,4 +84,22 @@ class ExerciseDaoImplTest {
       exerciseDao.addPlayerExercise(1L, 1L);
    }
 
+   @Test
+   @DisplayName("Should be able to return all intensity levels")
+   public void getIntensityLevels() {
+      assertEquals(3, exerciseDao.getAllIntensity().size());
+   }
+
+   @Test
+   @DisplayName("Should be able to return exercise by id")
+   public void getExerciseId() {
+      assertEquals(7, exerciseDao.getIdByName("Boxing"));
+   }
+
+   @Test
+   @DisplayName("Should be able to return exercise by id")
+   public void getIntensityId() {
+      assertEquals("High", exerciseDao.getIntensityByName("Boxing"));
+   }
+
 }
