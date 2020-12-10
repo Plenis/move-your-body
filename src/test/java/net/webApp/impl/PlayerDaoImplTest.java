@@ -13,10 +13,10 @@
 //
 //import static org.junit.jupiter.api.Assertions.*;
 //
-//class PlayerDaoImplTest {
+////class PlayerDaoImplTest {
 //
 //   private Jdbi jdbi;
-//   private PlayerDaoImpl playerDao;
+////   private PlayerDaoImpl playerDao;
 //
 //   public Jdbi getJdbiDatabaseConnection(String defaultJdbcUrl) throws URISyntaxException, SQLException {
 //      ProcessBuilder processBuilder = new ProcessBuilder();

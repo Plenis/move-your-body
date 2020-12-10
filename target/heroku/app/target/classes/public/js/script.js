@@ -8,6 +8,8 @@ URI     : https://surjithctly.in/
 Copyright © All rights Reserved 
 
 */
+<<<<<<< HEAD
+=======
 NUM_CONFETTI = 350
 COLORS = [[85,71,106], [174,61,99], [219,56,83], [244,92,68], [248,182,70]]
 PI_2 = 2*Math.PI
@@ -88,6 +90,7 @@ window.step = ->
   c.draw() for c in confetti
 
 step()
+>>>>>>> ababf854046687a0df700e95a4cfbcd52899d7d6
 
 $(function() {
     "use strict";

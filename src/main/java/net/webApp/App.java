@@ -55,14 +55,29 @@ public class App {
 
        //try {
 
+
 //            port(getHerokuAssignedPort());
        staticFiles.location("/public");
-//
+
        jdbi = getJdbiDatabaseConnection("jdbc:postgresql://localhost/exercise_db?username=thando&password=thando123");
 
-       ExerciseDaoImpl exerciseDao = new ExerciseDaoImpl(jdbi);
-       PlayerDaoImpl playerDao = new PlayerDaoImpl(jdbi);
-       Map<String, Object> player = new HashMap<>();
+            ExerciseDaoImpl exerciseDao = new ExerciseDaoImpl(jdbi);
+            PlayerDaoImpl playerDao = new PlayerDaoImpl(jdbi);
+            Map<String, Object> player = new HashMap<>();
+
+        get("/", (request, response) -> {
+
+            return new ModelAndView(player, "index.handlebars");
+
+        }, new HandlebarsTemplateEngine());
+
+        get("/timer", (request, response) -> {
+            return new ModelAndView(player, "timer.handlebars");
+        }, new HandlebarsTemplateEngine());
+
+        get("/move", (request, response) -> {
+            return new ModelAndView(player, "move.handlebars");
+        }, new HandlebarsTemplateEngine());
 
        get("/player/:id", (request, response) -> {
           Map<String, Object> map = new HashMap<>();
@@ -118,6 +133,9 @@ public class App {
           return new ModelAndView(map, "index.handlebars");
        }, new HandlebarsTemplateEngine());
 
+            get("/motion", (request, response) -> {
+                return new ModelAndView(player, "motion.handlebars");
+            }, new HandlebarsTemplateEngine());
 
     }
 }
