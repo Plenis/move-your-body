@@ -1,0 +1,152 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Move your Body</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Mobland - Mobile App Landing Page Template">
+    <meta name="keywords" content="HTML5, bootstrap, mobile, app, landing, ios, android, responsive">
+
+    <!-- Font -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <!-- Themify Icons -->
+    <link rel="stylesheet" href="/css/themify-icons.css">
+    <!-- Owl carousel -->
+    <link rel="stylesheet" href="/css/owl.carousel.min.css">
+    <!-- Main css -->
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+
+<body data-spy="scroll" data-target="#navbar" data-offset="30">
+
+<!-- Nav Menu -->
+
+<div class="section">
+    <div class="container">
+        <form method="POST" action="/player/1">
+        <div class="row">
+            <div class="col-md-6 d-flex align-items-center">
+                <div>
+                    <!--                        <div class="box-icon"><span class="ti-rocket gradient-fill ti-3x"></span></div>-->
+                    <h2>Start Moving</h2>
+                    <p class="mb-4">
+                        Please record a video of the exercise you would like to complete and select "Finish" when you're done!
+                    </p>
+
+                    <div>
+                        <div>Teachable Machine Pose Model</div>
+                        <button type="button" onclick="init()">Start</button>
+                        <button type="button" onclick="test()">TESTER</button>
+                        <div><canvas id="canvas"></canvas></div>
+                        <div id="label-container" name="label"></div>
+                        <input type="hidden" name="labelVal" value="TEST VALUE" id="labelVal">
+                    </div>
+
+                    <button class="btn btn-primary" type="submit">Finish</button>
+                </div>
+
+            </div>
+            <div class="col-md-6" style="display: flex;">
+
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Intensity</label>
+                    <select class="form-control" name="intensity">
+                        <option class="dropdown-item" type="button">choose intensity</option>
+                        {{# intensityLevels}}
+                            <option class="dropdown-item" type="button">{{name}}</option>
+                        {{/intensityLevels}}
+
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Timer</label>
+                    <select class="form-control" name="timer">
+                        <option class="dropdown-item" type="button">select time</option>
+                        <option class="dropdown-item" type="button">10</option>
+                    </select>
+                </div>
+
+            </div>
+        </div>
+        </form>
+    </div>
+
+    <div>
+        <p id="demo"></p>
+        <script>
+// Set the date we're counting down to
+var countDownDate = new Date("Jan 5, 2021 15:37:25").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+
+  // Time calculations for hours, minutes and seconds
+  // var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  // Output the result in an element with id="demo"
+  document.getElementById("demo").innerHTML =  hours + "h "
+  + minutes + "m " + seconds + "s ";
+
+  // If the count down is over, write some text
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "EXPIRED";
+  }
+}, 1000);
+</script>
+
+        <script>
+            var seconds = 0;
+var el = document.getElementById('seconds-counter');
+
+function incrementSeconds() {
+    seconds += 1;
+    el.innerText = "You have been here for " + seconds + " seconds.";
+}
+
+var cancel = setInterval(incrementSeconds, 1000);
+        </script>
+    </div>
+
+
+</div>
+
+
+<!-- jQuery and Bootstrap -->
+<script src="/js/jquery-3.2.1.min.js"></script>
+<script src="/js/bootstrap.bundle.min.js"></script>
+<!-- Plugins JS -->
+<script src="/js/owl.carousel.min.js"></script>
+<!-- Custom JS -->
+<!--<script src="/js/script.js"></script>-->
+
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
+<script src="/teachable.js"></script>
+
+</body>
+
+</html>
+
