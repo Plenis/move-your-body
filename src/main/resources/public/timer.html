@@ -1,0 +1,134 @@
+<script src="https://code.jquery.com/jquery-1.5.2.min.js"></script>
+<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300' rel='stylesheet' type='text/css'>
+<meta name="viewport" content="width=device-width, user-scalable=no">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Roboto, sans-serif;
+}
+.footer {
+  padding-bottom: 2em;
+  color: white;
+  font-style: italic;
+  font-weight: 100;
+}
+.container {
+  height: 100%;
+  width: 100%;
+  padding-top: 10vh;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.15) 100%), radial-gradient(at top center, rgba(255, 255, 255, 0.40) 0%, rgba(0, 0, 0, 0.40) 120%) #989898;
+  background-blend-mode: multiply, multiply;
+}
+
+.timer {
+  min-height: 400px;
+  width: 90vw;
+  margin: auto;
+  background-color: white;
+  box-shadow: 0px 2px 18px rgba(0, 0, 0, 0.6);
+  display: flex;
+}
+
+span {
+  font-size: 8em;
+}
+
+.clock {
+  margin: auto;
+}
+
+.indicators {
+  font-size: 1.2em;
+  text-align: center;
+  font-weight: 100;
+}
+
+.stBtn {
+  text-align: center;
+  font-size: 2em;
+  width: 150px;
+  height: 70px;
+  line-height: 70px;
+  background-color: aquamarine;
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+  margin-right: 0.5em;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.refresh {
+  text-align: center;
+  font-size: 2em;
+  width: 150px;
+  height: 70px;
+  line-height: 70px;
+  background-color: aquamarine;
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+}
+
+.red {
+  background-color: red;
+}
+
+#ado {
+  display: none;
+}
+
+@media only screen and (min-width: 420px) {
+  .timer {
+    width: 400px;
+  }
+}
+</style>
+
+<div id="c">
+
+    <html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="A simple Pomo Timer">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,400" rel="stylesheet">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <title>Pomo Timer</title>
+    </head>
+
+
+    <body>
+
+    <div class="container">
+        <h1>Countdown</h1>
+
+        <div class="timer">
+            <div class="clock"><span contenteditable="true" id="min">10</span><span>:</span><span contenteditable="true" id="sec">10</span>
+                <div class="indicators">Min&nbsp;&nbsp;:&nbsp;&nbsp;Sec</div>
+            </div>
+
+        </div>
+        <div class="controls">
+            <div class='stBtn'>Start</div>
+            <div class='refresh'>Reset</div>
+        </div>
+        <div class="footer" align="center">Click on the numbers of the timer to edit</div>
+    </div>
+    <audio id="ado" src="http://static1.grsites.com/archive/sounds/musical/musical009.mp3" controls="true"></audio>
+    <script src="timer.js"></script>
+    </body>
+    </html>
+
+</div>
