@@ -1,9 +1,20 @@
 @charset "UTF-8";
 
+/*
+
+Style   : MobApp CSS
+Version : 1.0
+Author  : Surjith S M
+URI     : https://surjithctly.in/
+
+Copyright © All rights Reserved
+
+*/
+
 
 /*------------------------
 [TABLE OF CONTENTS]
-    
+
 1. GLOBAL STYLES
 2. NAVBAR
 3. HERO
@@ -371,8 +382,6 @@ header {
 
 .perspective-phone {
     position: relative;
-    width: 100em;
-    height: 700em;
     z-index: -1;
 }
 
@@ -495,13 +504,6 @@ header {
 
 /*  IMAGE GALLERY
 ----------------------*/
- .perspective{
-width:500px;
-height:400px;
-
-}
-
-
 
 .img-gallery .owl-item {
     box-shadow: 0px 9px 32px 0px rgba(0, 0, 0, 0.07);
