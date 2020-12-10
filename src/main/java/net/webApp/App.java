@@ -13,62 +13,55 @@ import static spark.Spark.*;
 
 public class App {
 
-//    static int getHerokuAssignedPort() {
-//        ProcessBuilder processBuilder = new ProcessBuilder();
-//        if (processBuilder.environment().get("PORT") != null) {
-//            return Integer.parseInt(processBuilder.environment().get("PORT"));
-//        }
-//        return 4567;
-//    }
-//
-//    static Jdbi getJdbiDatabaseConnection(String defaultJdbcUrl) throws URISyntaxException {
-//        ProcessBuilder processBuilder = new ProcessBuilder();
-//        String database_url = processBuilder.environment().get("DATABASE_URL");
-//        if (database_url != null) {
-//
-//            URI uri = new URI(database_url);
-//            String[] hostParts = uri.getUserInfo().split(":");
-//            String username = hostParts[0];
-//            String password = hostParts[1];
-//            String host = uri.getHost();
-//
-//            int port = uri.getPort();
-//
-//            String path = uri.getPath();
-//            String url = String.format("jdbc:postgresql://%s:%s%s", host, port, path);
-//
-//            return Jdbi.create(url, username, password);
-//        }
-//
-//        return Jdbi.create(defaultJdbcUrl);
-//    }
+    static int getHerokuAssignedPort() {
+        ProcessBuilder processBuilder = new ProcessBuilder();
+        if (processBuilder.environment().get("PORT") != null) {
+            return Integer.parseInt(processBuilder.environment().get("PORT"));
+        }
+        return 4567;
+    }
 
-    public static void main(String[] args) throws URISyntaxException {
+    static Jdbi getJdbiDatabaseConnection(String defaultJdbcUrl) throws URISyntaxException {
+        ProcessBuilder processBuilder = new ProcessBuilder();
+        String database_url = processBuilder.environment().get("DATABASE_URL");
+        if (database_url != null) {
 
-        //try {
+            URI uri = new URI(database_url);
+            String[] hostParts = uri.getUserInfo().split(":");
+            String username = hostParts[0];
+            String password = hostParts[1];
+            String host = uri.getHost();
 
-//            port(getHerokuAssignedPort());
-//            staticFiles.location("/public");
-//
-//            Jdbi jdbi = getJdbiDatabaseConnection("jdbc:postgresql://localhost/waiters_app?username=sino&password=123");
+            int port = uri.getPort();
 
-            Map<String, Object> player = new HashMap<>();
+            String path = uri.getPath();
+            String url = String.format("jdbc:postgresql://%s:%s%s", host, port, path);
+
+            return Jdbi.create(url, username, password);
+        }
+
+        return Jdbi.create(defaultJdbcUrl);
+    }
+
+    public static void main(String[] args) {
+
+        try {
+
+            port(getHerokuAssignedPort());
+            staticFiles.location("/public");
+
+            Jdbi jdbi = getJdbiDatabaseConnection("jdbc:postgresql://localhost/waiters_app?username=sino&password=123");
+
+            Map<String, Object> waiter = new HashMap<>();
 
             get("/", (request, response) -> {
 
-                return new ModelAndView(player, "welcome.handlebars");
+                return new ModelAndView(waiter, "login.handlebars");
 
             }, new HandlebarsTemplateEngine());
 
-            get("/motion", (request, response) -> {
-                return new ModelAndView(player, "motion.handlebars");
-            }, new HandlebarsTemplateEngine());
-
-
-        //}
-//        catch (URISyntaxException e) {
-//            e.printStackTrace();
-//        }
-    //}
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+    }
 }
-
