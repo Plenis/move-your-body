@@ -1,3 +1,30 @@
+<script src="https://code.jquery.com/jquery-1.5.2.min.js"></script>
+<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300' rel='stylesheet' type='text/css'>
+
+<head>
+    <style>
+body {
+  background-image: url('img_girl.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+
+</style>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Themify Icons -->
+    <link rel="stylesheet" href="css/themify-icons.css">
+    <!-- Owl carousel -->
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <!-- Main css -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<div class="col-md-12">
+    <nav class="navbar navbar-dark navbar-expand-lg">
+
 <div>
     <div class="col-md-6 d-flex align-items-center">
         <div>
@@ -10,19 +37,25 @@
 
 
 
-
+Start
 
             </p>
 <!--                                    <button type="button" onclick="init()">Start</button>-->
 
             <a onclick="init()" class="btn btn-primary"><button> Start Model </button></a>
-            <!--                        <a href="#" class="btn btn-primary">Finish</a></div>-->
+<!--                                    <a href="/timer" class="btn btn-pr   imary">Finish</a></div>-->
         </div>
     </div>
 </div>
 
+    </nav>
+</div>
 
-<!--<div id="switch">-->
-<!--    <p style="margin: 0px;height: 5px; align:center;"></p>-->
-<!--    <a href="/timer"> <button  id="countdown">Finish</button> </a>-->
-<!--</div>-->
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
+<script src="teachable.js"></script>
+
+<div id="switch">
+    <p style="margin: 0px;height: 5px; align:center;"></p>
+    <a href="/timer"> <button  id="countdown">Finish</button> </a>
+</div>
