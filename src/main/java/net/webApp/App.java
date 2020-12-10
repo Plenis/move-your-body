@@ -55,7 +55,7 @@ public class App {
 
         //try {
 
-//            port(getHerokuAssignedPort());
+            port(getHerokuAssignedPort());
             staticFiles.location("/public");
 //
             jdbi = getJdbiDatabaseConnection("jdbc:postgresql://localhost/exercise_db?username=thando&password=thando123");
@@ -70,8 +70,12 @@ public class App {
 
         }, new HandlebarsTemplateEngine());
 
-        get("/tester", (request, response) -> {
-            return new ModelAndView(player, "tester.handlebars");
+        get("/timer", (request, response) -> {
+            return new ModelAndView(player, "timer.handlebars");
+        }, new HandlebarsTemplateEngine());
+
+        get("/move", (request, response) -> {
+            return new ModelAndView(player, "move.handlebars");
         }, new HandlebarsTemplateEngine());
 
 

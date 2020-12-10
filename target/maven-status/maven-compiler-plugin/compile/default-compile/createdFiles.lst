@@ -1,6 +1,7 @@
 net/webApp/App.class
 net/webApp/dao/ProgressDao.class
 net/webApp/model/Player.class
+net/webApp/model/Intensity.class
 net/webApp/impl/ExerciseDaoImpl.class
 net/webApp/model/PlayerExercise.class
 net/webApp/dao/PlayerDao.class
