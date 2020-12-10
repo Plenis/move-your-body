@@ -1,0 +1,11 @@
+net/webApp/App.class
+net/webApp/dao/ProgressDao.class
+net/webApp/model/Player.class
+net/webApp/impl/ExerciseDaoImpl.class
+net/webApp/model/PlayerExercise.class
+net/webApp/dao/PlayerDao.class
+net/webApp/impl/PlayerDaoImpl.class
+net/webApp/model/Progress.class
+net/webApp/dao/ExerciseDao.class
+net/webApp/impl/ProgressDaoImpl.class
+net/webApp/model/Exercise.class

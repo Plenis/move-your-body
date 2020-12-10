@@ -1,0 +1,11 @@
+/home/codex/IdeaProjects/MoveYourBody/src/main/java/net/webApp/model/PlayerExercise.java
+/home/codex/IdeaProjects/MoveYourBody/src/main/java/net/webApp/dao/PlayerDao.java
+/home/codex/IdeaProjects/MoveYourBody/src/main/java/net/webApp/dao/ExerciseDao.java
+/home/codex/IdeaProjects/MoveYourBody/src/main/java/net/webApp/impl/ExerciseDaoImpl.java
+/home/codex/IdeaProjects/MoveYourBody/src/main/java/net/webApp/impl/PlayerDaoImpl.java
+/home/codex/IdeaProjects/MoveYourBody/src/main/java/net/webApp/model/Progress.java
+/home/codex/IdeaProjects/MoveYourBody/src/main/java/net/webApp/impl/ProgressDaoImpl.java
+/home/codex/IdeaProjects/MoveYourBody/src/main/java/net/webApp/model/Exercise.java
+/home/codex/IdeaProjects/MoveYourBody/src/main/java/net/webApp/App.java
+/home/codex/IdeaProjects/MoveYourBody/src/main/java/net/webApp/dao/ProgressDao.java
+/home/codex/IdeaProjects/MoveYourBody/src/main/java/net/webApp/model/Player.java
