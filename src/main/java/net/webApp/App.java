@@ -113,8 +113,9 @@ public class App {
 
        }, new HandlebarsTemplateEngine());
 
-       get("/motion", (request, response) -> {
-          return new ModelAndView(player, "motion.handlebars");
+       get("/", (request, response) -> {
+          Map<String, Object> map = new HashMap<>();
+          return new ModelAndView(map, "index.handlebars");
        }, new HandlebarsTemplateEngine());
 
 
