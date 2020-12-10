@@ -53,12 +53,13 @@ public class App {
     public static void main(String[] args) throws URISyntaxException {
 
 
-        //try {
+       //try {
 
-            port(getHerokuAssignedPort());
-            staticFiles.location("/public");
-//
-            jdbi = getJdbiDatabaseConnection("jdbc:postgresql://localhost/exercise_db?username=thando&password=thando123");
+
+//            port(getHerokuAssignedPort());
+       staticFiles.location("/public");
+
+       jdbi = getJdbiDatabaseConnection("jdbc:postgresql://localhost/exercise_db?username=thando&password=thando123");
 
             ExerciseDaoImpl exerciseDao = new ExerciseDaoImpl(jdbi);
             PlayerDaoImpl playerDao = new PlayerDaoImpl(jdbi);
@@ -78,7 +79,6 @@ public class App {
             return new ModelAndView(player, "move.handlebars");
         }, new HandlebarsTemplateEngine());
 
-
        get("/player/:id", (request, response) -> {
           Map<String, Object> map = new HashMap<>();
 
@@ -94,7 +94,7 @@ public class App {
           int time = Integer.parseInt(request.queryParams("timer"));
           String intensity = request.queryParams("intensity");
 
-                  //System.out.println();
+          //System.out.println();
           Long playerId = Long.parseLong(request.params("id"));
           Long exerId = exerciseDao.getIdByName(labelVal.trim());
           Long intensityId = exerciseDao.getIntensityByName(intensity);
@@ -128,8 +128,14 @@ public class App {
 
        }, new HandlebarsTemplateEngine());
 
+       get("/", (request, response) -> {
+          Map<String, Object> map = new HashMap<>();
+          return new ModelAndView(map, "index.handlebars");
+       }, new HandlebarsTemplateEngine());
+
             get("/motion", (request, response) -> {
                 return new ModelAndView(player, "motion.handlebars");
             }, new HandlebarsTemplateEngine());
+
     }
 }
