@@ -1,9 +1,7 @@
 package net.webApp.impl;
 
 import net.webApp.dao.ExerciseDao;
-import net.webApp.model.Exercise;
-import net.webApp.model.Player;
-import net.webApp.model.PlayerExercise;
+import net.webApp.model.*;
 import org.jdbi.v3.core.Jdbi;
 import org.jdbi.v3.core.mapper.reflect.BeanMapper;
 
@@ -70,5 +68,41 @@ public class ExerciseDaoImpl implements ExerciseDao {
    @Override
    public boolean delete(Long playerId) {
       return false;
+   }
+
+   @Override
+   public Long getIdByName(String theName) {
+      return jdbi.withHandle(handle -> handle.createQuery("SELECT id FROM exercise WHERE name = ?")
+              .bind(0, theName)
+              .mapTo(Long.class)
+              .findOnly() );
+   }
+
+   @Override
+   public List<Intensity> getAllIntensity() {
+      return jdbi.withHandle(handle -> handle.createQuery("SELECT id, name FROM intensity")
+              .mapToBean(Intensity.class)
+              .list() );
+   }
+
+   @Override
+   public boolean addProgress(Progress progress) {
+      jdbi.useHandle(handle -> handle.execute("INSERT INTO progress(time_completed, calories_lost, intensity_id, player_id, exercise_id ) VALUES(?,?,?,?,?)",
+              progress.getTimeCompleted(),
+              progress.getCaloriesLost(),
+              progress.getIntensityId(),
+              progress.getPlayerId(),
+              progress.getExerciseId())
+      );
+      return true;
+   }
+
+
+   @Override
+   public Long getIntensityByName(String theName) {
+      return jdbi.withHandle(handle -> handle.createQuery("SELECT id FROM intensity WHERE name = ?")
+              .bind(0, theName)
+              .mapTo(Long.class)
+              .findOnly() );
    }
 }
