@@ -133,32 +133,19 @@ $(document).ready(function() {
                 }
             }
         });
-        $('#sw_start').live('click', function() {
-            $.APP.startTimer('sw');
-        });
+
         $('#cd_start').live('click', function() {
             $.APP.startTimer('cd');
         });
-        $('#sw_reset,#cd_reset').live('click', function() {
-            $.APP.resetTimer();
-        });
-        $('#sw_pause,#cd_pause').live('click', function() {
-            $.APP.pauseTimer();
-        });
+
+
     })(jQuery);
 });
 
-$( "#stopwatch" ).click(function() {
-  $("#s").toggle();
-  $("#c").hide();
-  $.APP.resetTimer();
-});
 $( "#countdown" ).click(function() {
   $("#c").toggle();
-  $("#s").hide();
   $.APP.resetTimer();
 });
 $(document).ready(function() {
   $("#c").hide();
-  $("#s").hide();
 })
