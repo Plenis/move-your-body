@@ -60,6 +60,13 @@ public class App {
 
             }, new HandlebarsTemplateEngine());
 
+            get("/timer", (request, response) -> {
+
+                return new ModelAndView(waiter, "timer.handlebars");
+
+            }, new HandlebarsTemplateEngine());
+
+
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
