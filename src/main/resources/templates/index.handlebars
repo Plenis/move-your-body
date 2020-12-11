@@ -103,35 +103,31 @@ body {
                     <h2>Participant Information</h2>
 
                     <p class="mb-4"><div class="testbox">
-                        <form class="form-control"  action="/move">
+                        <form class="form-control"  method="post" action="/player/add">
                             <br/>
                             <fieldset>
                                 <legend></legend>
                     <p></p>
-                    <div class="item">
-<!--                        <label for="fname"> First Name<span>*</span></label>-->
-                        <input id="fname" type="text" class="form-control" placeholder="First Name"   name="fname" />
+                    <div class="item mb-3">
+<!--                        <label for="fname">Name<span>*</span></label>-->
+                        <input type="text" class="form-control" placeholder="Name"   name="name" />
                     </div>
-                    <div class="item">
-<!--                        <label for="activity">Last Name<span>*</span></label> -->
-                        <input id="activity" type="text" class="form-control" placeholder="Last Name" name="activity" />
+                    <div class="item mb-3">
+<!--                        <label for="weight">Weight</label>-->
+                        <input type="text" class="form-control" placeholder="Weight" name="weight" />
                     </div>
-                    <div class="item">
-<!--                        <label for="fee">Weight(in kg)<span>*</span></label>-->
-                        <input id="fee" type="number" class="form-control" placeholder="Weight(in kg)" name="fee" />
+                    <div class="item mb-3">
+<!--                        <label for="height">Height</label>-->
+                        <input type="text" class="form-control" placeholder="Height" name="height" />
                     </div>
-                    <div class="item">
-<!--                        <label for="fee">Height(in cm)<span>*</span></label>-->
-                        <input id="fee" type="number" class="form-control" placeholder="Height(in cm)" name="fee" />
+                    <div class="item mb-3">
+<!--                        <label for="age">Age</label>-->
+                        <input type="text" class="form-control" placeholder="Age" name="age" />
                     </div>
-                    <div class="item">
-<!--                        <label for="bdate">Birth Date <span>*</span></label>-->
-                        <input id="bdate" type="date" class="form-control" placeholder="Birth Date" name="bdate" />
-                        <i class="fas fa-calendar-alt"></i>
                         <div>
                             <br>
                             <span id="result"></span>
-                            <button class = "btn btn-primary" >Submit</button>
+                            <button class="btn btn-primary" type="submit">Submit</button>
                         </div>
                     </div>
                    <!-- <div class="item">

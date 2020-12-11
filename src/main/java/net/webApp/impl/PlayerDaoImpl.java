@@ -1,9 +1,7 @@
 package net.webApp.impl;
 
 import net.webApp.dao.PlayerDao;
-import net.webApp.model.Exercise;
-import net.webApp.model.Player;
-import net.webApp.model.PlayerExercise;
+import net.webApp.model.*;
 import org.jdbi.v3.core.Jdbi;
 import org.jdbi.v3.core.mapper.reflect.BeanMapper;
 
@@ -82,7 +80,7 @@ public class PlayerDaoImpl implements PlayerDao {
               "ON p.id = pex.player_id " +
               "INNER JOIN exercise ex " +
               "ON pex.exercise_id = ex.id " +
-              "WHERE p.id = " + 1;
+              "WHERE p.id = " + playerId;
 
       return jdbi.withHandle( handle -> {
          list = handle.createQuery(sql)
@@ -114,4 +112,60 @@ public class PlayerDaoImpl implements PlayerDao {
 
 
 
+   //FIRST THING IN THE MORNING
+   @Override
+   public List<Player> getProgress(Long playerId) {
+      String sql = "SELECT p.id p_id, p.name p_name, p.weight p_weight, p.height p_height, p.age p_age, " +
+              "ex.id ex_id, ex.name ex_name, ex.met ex_met, " +
+              "i.id i_id, i.name i_name, " +
+              "pro.id pro_id, pro.time_completed pro_time_completed, pro.calories_lost pro_calories_lost, pro.intensity_id pro_intensity_id, pro.player_id pro_player_id, pro.exercise_id pro_exercise_id " +
+              "FROM player p " +
+              "INNER JOIN progress pro " +
+              "ON p.id = pro.player_id " +
+              "INNER JOIN exercise ex " +
+              "ON pro.exercise_id = ex.id " +
+              "INNER JOIN intensity i " +
+              "ON pro.intensity_id = i.id " +
+              "WHERE p.id = " + playerId;
+      System.out.println("DOES NOT REACH THIS LINE");
+      return jdbi.withHandle( handle -> {
+         list = handle.createQuery(sql)
+                 .registerRowMapper(BeanMapper.factory(Progress.class, "pro"))
+                 .registerRowMapper(BeanMapper.factory(Exercise.class, "ex"))
+                 .registerRowMapper(BeanMapper.factory(Intensity.class, "i"))
+                 .registerRowMapper(BeanMapper.factory(Player.class, "p"))
+                 .reduceRows(new LinkedHashMap<Long, Player>(), (map, rowView) -> {
+                    Player player = map.computeIfAbsent(
+                            rowView.getColumn("p_id", Long.class),
+                            id -> rowView.getRow(Player.class)
+                    );
+
+                    if (rowView.getColumn("pro_id", Long.class) != null)
+                       player.addProgress(rowView.getRow(Progress.class));
+
+                    if (rowView.getColumn("ex_id", Long.class) != null)
+                       player.addExercise(rowView.getRow(Exercise.class));
+
+                    if (rowView.getColumn("i_id", Long.class) != null)
+                       player.addIntensity(rowView.getRow(Intensity.class));
+
+                    return map;
+
+                 })
+                 .values()
+                 .stream()
+                 .collect(toList());
+
+         return list;
+      });
+   }
+
+
+   @Override
+   public Long getIdByName(String name) {
+      return jdbi.withHandle(handle -> handle.createQuery("SELECT id FROM player WHERE name = ?")
+              .bind(0, name)
+              .mapTo(Long.class)
+              .findOnly() );
+   }
 }

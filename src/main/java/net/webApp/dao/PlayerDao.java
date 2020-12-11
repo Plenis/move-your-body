@@ -10,7 +10,10 @@ public interface PlayerDao {
    List<Player> getAll();
    Player getById(Long id);
    boolean delete(Long playerId);
-   public boolean update(Long playerId, Player player);
+   boolean update(Long playerId, Player player);
 
-   public List<Player> getPlayerExercises(Long playerId);
+   List<Player> getPlayerExercises(Long playerId);
+   Long getIdByName(String name);
+   List<Player> getProgress(Long playerId);
+
 }

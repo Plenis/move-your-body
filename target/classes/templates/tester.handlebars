@@ -24,6 +24,9 @@
 
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link rel="stylesheet" href="/css/styles.css">
+
+
+
 </head>
 
 
@@ -33,101 +36,87 @@
 
 <div class="section">
     <div class="container">
+        <h2 class="mt-2 mb-5" style="text-align: center;">Welcome: {{player.name}}</h2>
         <form method="POST" action="/player/1">
-        <div class="row">
-            <div class="col-md-6 d-flex align-items-center">
-                <div>
-                    <!--                        <div class="box-icon"><span class="ti-rocket gradient-fill ti-3x"></span></div>-->
-                    <h2>Start Moving</h2>
-                    <p class="mb-4">
-                        Please record a video of the exercise you would like to complete and select "Finish" when you're done!
-                    </p>
-
+            <div class="row">
+                <div class="col-md-5 d-flex align-items-center">
                     <div>
-                        <div>Teachable Machine Pose Model</div>
-                        <button type="button" onclick="init()">Start</button>
-                        <button type="button" onclick="test()">TESTER</button>
-                        <div><canvas id="canvas"></canvas></div>
-                        <div id="label-container" name="label"></div>
-                        <input type="hidden" name="labelVal" value="TEST VALUE" id="labelVal">
+                        <!--                        <div class="box-icon"><span class="ti-rocket gradient-fill ti-3x"></span></div>-->
+                        <h4>Start Moving</h4>
+                        <p class="mb-4">
+                            Please record a video of the exercise you would like to complete and select "Finish" when you're done!
+                        </p>
+
+                        <div>
+                            <div>Teachable Machine Pose Model</div>
+                            <button class="btn btn-primary mt-3 mb-3" type="button" onclick="init()">Start</button>
+<!--                            <button class="btn btn-primary" type="button" onclick="test()">TESTER</button>-->
+                            <div><canvas id="canvas"></canvas></div>
+                            <div id="label-container" name="label"></div>
+                            <input type="hidden" name="labelVal" value="TEST VALUE" id="labelVal">
+                        </div>
+
+                        <button class="btn btn-primary" type="submit">Finish</button>
+                    </div>
+                </div>
+
+                <div class="col-md-7" style="display: flex;">
+                    <div class="col-md-8" style="display: flex;">
+                        <div id="c">
+                            <h4>Countdown</h4>
+                            <p>Set timer of how long you will be exercising </p>
+                            <span id="cd_h">00</span><span>&nbsp;:</span>
+                            <span id="cd_m">00</span><span>&nbsp;:</span>
+                            <span id="cd_s">00</span><span>&nbsp;:</span>
+                            <span id="cd_ms">00</span>
+                            <br/>
+                            <br/>
+                            <div style="display: flex;">
+                                <input class="btn btn-primary mr-2"  type="button" value="START" id="cd_start" />
+                                <input class="btn btn-primary mr-2 " type="button" value="PAUSE" id="cd_pause" />
+                                <input class="btn btn-primary" type="button" value="RESET" id="cd_reset" />
+                            </div>
+
+                            <br/>
+                            <br/>
+                            <input name="timer" type="number" value="15" id="cd_minutes" />
+                            <i id="minutes">Minutes</i>
+                        </div>
+
                     </div>
 
-                    <button class="btn btn-primary" type="submit">Finish</button>
+                    <div class="col-md-4" style="display: flex;">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1"><h4>Intensity</h4></label>
+                            <select class="form-control" name="intensity">
+                                <option class="dropdown-item" type="button">choose intensity</option>
+                                {{# intensityLevels}}
+                                    <option class="dropdown-item" type="button">{{name}}</option>
+                                {{/intensityLevels}}
+
+                            </select>
+                        </div>
+                    </div>
+
+
+
+<!--                    <div class="form-group">-->
+<!--                        <label for="exampleInputEmail1">Timer</label>-->
+<!--                        <select class="form-control" name="timer">-->
+<!--                            <option class="dropdown-item" type="button">select time</option>-->
+<!--                            <option class="dropdown-item" type="button">10</option>-->
+<!--                        </select>-->
+<!--                    </div>-->
                 </div>
 
             </div>
-            <div class="col-md-6" style="display: flex;">
 
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Intensity</label>
-                    <select class="form-control" name="intensity">
-                        <option class="dropdown-item" type="button">choose intensity</option>
-                        {{# intensityLevels}}
-                            <option class="dropdown-item" type="button">{{name}}</option>
-                        {{/intensityLevels}}
-
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Timer</label>
-                    <select class="form-control" name="timer">
-                        <option class="dropdown-item" type="button">select time</option>
-                        <option class="dropdown-item" type="button">10</option>
-                    </select>
-                </div>
-
-            </div>
-        </div>
         </form>
     </div>
-
-    <div>
-        <p id="demo"></p>
-        <script>
-// Set the date we're counting down to
-var countDownDate = new Date("Jan 5, 2021 15:37:25").getTime();
-
-// Update the count down every 1 second
-var x = setInterval(function() {
-
-  // Get today's date and time
-  var now = new Date().getTime();
-
-  // Find the distance between now and the count down date
-  var distance = countDownDate - now;
-
-  // Time calculations for hours, minutes and seconds
-  // var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-  // Output the result in an element with id="demo"
-  document.getElementById("demo").innerHTML =  hours + "h "
-  + minutes + "m " + seconds + "s ";
-
-  // If the count down is over, write some text
-  if (distance < 0) {
-    clearInterval(x);
-    document.getElementById("demo").innerHTML = "EXPIRED";
-  }
-}, 1000);
-</script>
-
-        <script>
-            var seconds = 0;
-var el = document.getElementById('seconds-counter');
-
-function incrementSeconds() {
-    seconds += 1;
-    el.innerText = "You have been here for " + seconds + " seconds.";
-}
-
-var cancel = setInterval(incrementSeconds, 1000);
-        </script>
-    </div>
-
+<!--    <div id="switch">-->
+<!--        <button id="countdown">COUNTDOWN</button>-->
+<!--        <script src="timer.js"></script>-->
+<!--    </div>-->
 
 </div>
 
@@ -145,6 +134,7 @@ var cancel = setInterval(incrementSeconds, 1000);
 
 <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
 <script src="/teachable.js"></script>
+<script src="/timer.js"></script>
 
 </body>
 

@@ -51,91 +51,103 @@ public class App {
     }
 
     public static void main(String[] args) throws URISyntaxException {
+       try {
+          port(getHerokuAssignedPort());
+          staticFiles.location("/public");
+
+          jdbi = getJdbiDatabaseConnection("jdbc:postgresql://localhost/exercise_db?username=thando&password=thando123");
+
+          ExerciseDaoImpl exerciseDao = new ExerciseDaoImpl(jdbi);
+          PlayerDaoImpl playerDao = new PlayerDaoImpl(jdbi);
+          Map<String, Object> player = new HashMap<>();
+
+          get("/", (request, response) -> {
+             Map<String, Object> map = new HashMap<>();
+             return new ModelAndView(map, "index.handlebars");
+          }, new HandlebarsTemplateEngine());
 
 
-       //try {
+          post("/player/add", (request, response) -> {
+             Map<String, Object> map = new HashMap<>();
+             Player player1 = new Player();
 
+             String name = request.queryParams("name").toLowerCase();
+             String newName = name.substring(0, 1).toUpperCase() + name.substring(1);
 
-//            port(getHerokuAssignedPort());
-       staticFiles.location("/public");
+             player1.setName(newName);
+             player1.setWeight(Double.parseDouble(request.queryParams("weight")));
+             player1.setHeight(Double.parseDouble(request.queryParams("height")));
+             player1.setAge(Integer.parseInt(request.queryParams("age")));
 
-       jdbi = getJdbiDatabaseConnection("jdbc:postgresql://localhost/exercise_db?username=thando&password=thando123");
+             playerDao.add(player1);
+             Long playerId = playerDao.getIdByName(player1.getName());
 
-            ExerciseDaoImpl exerciseDao = new ExerciseDaoImpl(jdbi);
-            PlayerDaoImpl playerDao = new PlayerDaoImpl(jdbi);
-            Map<String, Object> player = new HashMap<>();
+             response.redirect("/player/" + playerId);
 
-        get("/", (request, response) -> {
+             return new ModelAndView(map, "index.handlebars");
 
-            return new ModelAndView(player, "index.handlebars");
+          }, new HandlebarsTemplateEngine());
 
-        }, new HandlebarsTemplateEngine());
+          get("/timer", (request, response) -> {
+             return new ModelAndView(player, "timer.handlebars");
+          }, new HandlebarsTemplateEngine());
 
-        get("/timer", (request, response) -> {
-            return new ModelAndView(player, "timer.handlebars");
-        }, new HandlebarsTemplateEngine());
+          get("/move", (request, response) -> {
+             return new ModelAndView(player, "move.handlebars");
+          }, new HandlebarsTemplateEngine());
 
-        get("/move", (request, response) -> {
-            return new ModelAndView(player, "move.handlebars");
-        }, new HandlebarsTemplateEngine());
+          get("/player/:id", (request, response) -> {
+             Map<String, Object> map = new HashMap<>();
 
-       get("/player/:id", (request, response) -> {
-          Map<String, Object> map = new HashMap<>();
+             List<Intensity> intensityLevels = exerciseDao.getAllIntensity();
+             Player player1 = playerDao.getById(Long.parseLong(request.params("id")));
 
-          List<Intensity> intensityLevels = exerciseDao.getAllIntensity();
-          System.out.println("NUMBER OF LEVELS: " + intensityLevels.size());
-          map.put("intensityLevels", intensityLevels);
-          return new ModelAndView(map, "tester.handlebars");
+             System.out.println(playerDao.getProgress(Long.parseLong(request.params("id"))).size());
 
-       }, new HandlebarsTemplateEngine());
+             map.put("intensityLevels", intensityLevels);
+             map.put("player", player1);
 
-       post("/player/:id", (request, response) -> {
-          String labelVal = request.queryParams("labelVal");
-          int time = Integer.parseInt(request.queryParams("timer"));
-          String intensity = request.queryParams("intensity");
+             return new ModelAndView(map, "tester.handlebars");
 
-          //System.out.println();
-          Long playerId = Long.parseLong(request.params("id"));
-          Long exerId = exerciseDao.getIdByName(labelVal.trim());
-          Long intensityId = exerciseDao.getIntensityByName(intensity);
+          }, new HandlebarsTemplateEngine());
 
-          Player player1 = playerDao.getById(playerId);
-          Exercise exercise = exerciseDao.getById(exerId);
+          post("/player/:id", (request, response) -> {
+             String labelVal = request.queryParams("labelVal");
+             int time = Integer.parseInt(request.queryParams("timer"));
+             String intensity = request.queryParams("intensity");
 
-          double weight = player1.getWeight();
-          double calories_lost = weight * exercise.getMet();
+             //System.out.println();
+             Long playerId = Long.parseLong(request.params("id"));
+             Long exerId = exerciseDao.getIdByName(labelVal.trim());
+             Long intensityId = exerciseDao.getIntensityByName(intensity);
 
-          System.out.println("calories_lost: " + calories_lost);
+             Player player1 = playerDao.getById(playerId);
+             Exercise exercise = exerciseDao.getById(exerId);
 
-          Progress progress = new Progress();
-          progress.setTimeCompleted(time);
-          progress.setCaloriesLost(3);
-          progress.setIntensityId(intensityId);
-          progress.setPlayerId(playerId);
-          progress.setExerciseId(exerId);
+             double weight = player1.getWeight();
+             double calories_lost = weight * exercise.getMet();
 
-          System.out.println("POSTING SOME DATA");
-          System.out.println(progress.getTimeCompleted());
-          System.out.println(progress.getCaloriesLost());
-          System.out.println(progress.getIntensityId());
-          System.out.println(progress.getPlayerId());
-          System.out.println(progress.getExerciseId());
+             Progress progress = new Progress();
+             progress.setTimeCompleted(time);
+             progress.setCaloriesLost(3);
+             progress.setIntensityId(intensityId);
+             progress.setPlayerId(playerId);
+             progress.setExerciseId(exerId);
 
-          exerciseDao.addProgress(progress);
+             exerciseDao.addProgress(progress);
 
+             return new ModelAndView(player, "tester.handlebars");
 
-          return new ModelAndView(player, "tester.handlebars");
+          }, new HandlebarsTemplateEngine());
 
-       }, new HandlebarsTemplateEngine());
+          get("/motion", (request, response) -> {
+             return new ModelAndView(player, "motion.handlebars");
+          }, new HandlebarsTemplateEngine());
 
-       get("/", (request, response) -> {
-          Map<String, Object> map = new HashMap<>();
-          return new ModelAndView(map, "index.handlebars");
-       }, new HandlebarsTemplateEngine());
-
-            get("/motion", (request, response) -> {
-                return new ModelAndView(player, "motion.handlebars");
-            }, new HandlebarsTemplateEngine());
+       }
+       catch(Exception ex) {
+          ex.printStackTrace();
+       }
 
     }
 }

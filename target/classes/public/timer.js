@@ -158,7 +158,7 @@ $( "#countdown" ).click(function() {
   $("#s").hide();
   $.APP.resetTimer();
 });
-$(document).ready(function() {
-  $("#c").hide();
-  $("#s").hide();
-})
+//$(document).ready(function() {
+//  $("#c").hide();
+//  $("#s").hide();
+//})

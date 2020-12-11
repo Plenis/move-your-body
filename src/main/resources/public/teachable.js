@@ -13,7 +13,7 @@
         maxPredictions = model.getTotalClasses();
 
         // Convenience function to setup a webcam
-        const size = 400;
+        const size = 300;
         const flip = true; // whether to flip the webcam
         webcam = new tmPose.Webcam(size, size, flip); // width, height, flip
         await webcam.setup(); // request access to the webcam
@@ -55,51 +55,15 @@
                highest = prediction[i].probability.toFixed(2);
                classPrediction = prediction[i].className;
             }
-//            const classPrediction =
-//                prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-//            labelContainer.childNodes[i].innerHTML = classPrediction;
         }
 
          labelContainer.innerHTML = classPrediction;
-
          document.getElementById("labelVal").value = classPrediction;
 
         // finally draw the poses
         drawPose(pose);
     }
 
-
- //       function addProgress(className) {
-//            console.log("PROMISING FROM HERE...");
-//            const chocModeElem = document.querySelector(".mode:checked");
-//             if (chocModeElem.value === "buy") {
-//                 axios.post("/api/buy", {
-//                     name: chocName,
-//                     qty : 1
-//                 }).then(function(result){
-//                      //console.log(result.data);
-//                     if (result.data.status === "error") {
-//                         chocNameElem.innerHTML = result.data.message;
-//                     } else {
-//                         chocNameElem.innerHTML = result.data.message;
-//                     }
-//                 })
-//             }
-//
-//             if (chocModeElem.value === "eat") {
-//                 axios.post("/api/eat", {
-//                     name: chocName,
-//                     qty : 1
-//                 }).then(function(result){
-//                      //console.log(result.data);
-//                     if (result.data.status === "error") {
-//                         chocNameElem.innerHTML = result.data.message;
-//                     } else {
-//                         chocNameElem.innerHTML = result.data.message;
-//                     }
-//                 })
-//             }
- //      }
 
 
 

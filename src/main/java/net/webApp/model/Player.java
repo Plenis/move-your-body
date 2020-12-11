@@ -12,6 +12,8 @@ public class Player {
 
    private List<PlayerExercise> playerExercises = new ArrayList<>();
    private List<Exercise> exercises = new ArrayList<>();
+   private List<Intensity> intensities = new ArrayList<>();
+   private List<Progress> progressList = new ArrayList<>();
 
    public Player() {}
 
@@ -71,12 +73,28 @@ public class Player {
       exercises.add(exercise);
    }
 
+   public void addIntensity(Intensity intensity) {
+      intensities.add(intensity);
+   }
+
+   public void addProgress(Progress progress) {
+      progressList.add(progress);
+   }
+
    public List<PlayerExercise> getPlayerExercises() {
       return playerExercises;
    }
 
    public List<Exercise> getExercises() {
       return exercises;
+   }
+
+   public List<Intensity> getIntensities() {
+      return intensities;
+   }
+
+   public List<Progress> getProgressList() {
+      return progressList;
    }
 
    @Override
@@ -89,7 +107,10 @@ public class Player {
               ", age=" + age +
               ", playerExercises=" + playerExercises +
               ", exercises=" + exercises +
+              ", intensities=" + intensities +
+              ", progressList=" + progressList +
               '}';
    }
+
 }
 
