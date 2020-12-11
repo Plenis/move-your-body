@@ -5,13 +5,18 @@
 <style>
 
     body {
-  /*background-image:url("http://devwild.nl/pattern.png");*/
-  background: white;
+  background-image:url("http://devwild.nl/pattern.png");
+<!--  background: white;-->
 }
 h1 {
     font-family: "Roboto", sans-serif;
     font-weight: 300;
 }
+
+container {
+    align: center;
+  }
+
 input {
     padding:4px;}
 
@@ -64,24 +69,75 @@ span {
 
 </style>
 
-<div id="c">
-    <h1>Countdown</h1>
+<div id="container">
 
+    <h1>Countdown</h1>
+    <br>
+    <p>Set timer of how long you will be exercising </p>
     <span id="cd_h">00</span><span>&nbsp;:</span>
     <span id="cd_m">00</span><span>&nbsp;:</span>
     <span id="cd_s">00</span><span>&nbsp;:</span>
     <span id="cd_ms">00</span>
     <br/>
     <br/>
+<!--    <input type="button" value="START" id="cd_start" />-->
+<!--    <input type="button" value="PAUSE" id="cd_pause" />-->
+<!--    <input type="button" value="RESET" id="cd_reset" />-->
+<!--    <br/>-->
+    <br/>
+    <input type="number" value="15" id="cd_minutes" />
+<!--    <select class="form-control" name="timer">-->
+<!--        <option class="dropdown-item" type="number" id="cd_minutes">select time</option>-->
+<!--        <option class="dropdown-item" type="number" value="10" id="cd_minutes">5</option>-->
+<!--        <option class="dropdown-item" type="number" value="10" id="cd_minutes">10</option>-->
+<!--        <option class="dropdown-item" type="number" value="10" id="cd_minutes">15</option>-->
+<!--        <option class="dropdown-item" type="number" value="10" id="cd_minutes">20</option>-->
+    <i id="minutes">Minutes</i>
+<!--    </select>-->
+<!--</div>-->
+
+<!--<div class="row">-->
+<!--    <div class="col-md-6" style="display: flex;" align="center">-->
+
+        <div class="form-group" align="center">
+            <p> Choose how intense your workout will be</p>
+            <label for="exampleInputEmail1">Intensity</label>
+            <select class="form-control" name="intensity">
+                <option class="dropdown-item" type="button">choose intensity</option>
+                <option value="Low">Low</option>
+                <option value="Med">Medium</option>
+                <option value="High">High</option>
+
+                {{# intensityLevels}}
+                    <option class="dropdown-item" type="button">{{name}}</option>
+                {{/intensityLevels}}
+
+            </select>
+<!--        </div>-->
+<!--        <br>-->
+<!--        <br/>-->
+
+<!--        <div class="form-group">-->
+<!--            <label for="exampleInputEmail1">Timer</label>-->
+<!--            <select class="form-control" name="timer">-->
+<!--                <option class="dropdown-item" type="button">select time</option>-->
+<!--                <option class="dropdown-item" type="button">10</option>-->
+<!--            </select>-->
+<!--        </div>-->
+
+<!--    </div>-->
+<!--</div>-->
+<br><br>
     <input type="button" value="START" id="cd_start" />
     <input type="button" value="PAUSE" id="cd_pause" />
     <input type="button" value="RESET" id="cd_reset" />
-    <br/>
-    <br/>
-    <input type="number" value="15" id="cd_minutes" />
-    <i id="minutes">Minutes</i>
+<!--</form>-->
 </div>
-<div id="switch">
-    <button id="countdown">COUNTDOWN</button>
+</div>
+
+
+<!--<div id="switch">-->
+<!--    <button id="countdown">COUNTDOWN</button>-->
     <script src="timer.js"></script>
 </div>
+

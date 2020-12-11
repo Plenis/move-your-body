@@ -25,7 +25,7 @@ public class App {
         if (processBuilder.environment().get("PORT") != null) {
             return Integer.parseInt(processBuilder.environment().get("PORT"));
         }
-        return 4567;
+        return 4566;
     }
 
     static Jdbi getJdbiDatabaseConnection(String defaultJdbcUrl) throws URISyntaxException {
@@ -56,7 +56,7 @@ public class App {
        //try {
 
 
-//            port(getHerokuAssignedPort());
+            port(getHerokuAssignedPort());
        staticFiles.location("/public");
 
        jdbi = getJdbiDatabaseConnection("jdbc:postgresql://localhost/exercise_db?username=thando&password=thando123");
@@ -79,7 +79,12 @@ public class App {
             return new ModelAndView(player, "move.handlebars");
         }, new HandlebarsTemplateEngine());
 
-       get("/player/:id", (request, response) -> {
+        get("/progress", (request, response) -> {
+            return new ModelAndView(player, "progress.handlebars");
+        }, new HandlebarsTemplateEngine());
+
+
+        get("/player/:id", (request, response) -> {
           Map<String, Object> map = new HashMap<>();
 
           List<Intensity> intensityLevels = exerciseDao.getAllIntensity();

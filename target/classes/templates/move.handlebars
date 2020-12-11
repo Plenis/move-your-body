@@ -22,11 +22,14 @@ body {
     <link href="css/style.css" rel="stylesheet">
 </head>
 
-<div class="col-md-12">
+<div class="section light-bg">
+
+<div class="row">
+<div class="col-md-12" align="center">
     <nav class="navbar navbar-dark navbar-expand-lg">
 
 <div>
-    <div class="col-md-6 d-flex align-items-center">
+    <div class="col-md-6 d-flex align-items-center" align="center">
         <div>
             <!--                        <div class="box-icon"><span class="ti-rocket gradient-fill ti-3x"></span></div>-->
             <h2>Start Moving</h2>
@@ -42,20 +45,30 @@ Start
             </p>
 <!--                                    <button type="button" onclick="init()">Start</button>-->
 
-            <a onclick="init()" class="btn btn-primary"><button> Start Model </button></a>
+            <a onclick="init()" class="btn btn-primary">
+                <button class = "btn btn-primary" type="button">Start</button>
+            </a>
 <!--                                    <a href="/timer" class="btn btn-pr   imary">Finish</a></div>-->
         </div>
     </div>
 </div>
 
     </nav>
-</div>
 
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
 <script src="teachable.js"></script>
+<br><br>
+    <div class="col-md-6 d-flex align-items-center" align="center">
 
-<div id="switch">
-    <p style="margin: 0px;height: 5px; align:center;"></p>
-    <a href="/timer"> <button  id="countdown">Finish</button> </a>
+    <div id="switch" align="center">
+    <p style="margin: 0px;height: 5px; align:center;"> Press finish to proceed to timer</p>
+    <br><br>
+    <a href="/timer">
+        <button class = "btn btn-primary" id="countdown">Finish</button>
+    </a>
+    </div>
+</div>
+</div>
+</div>
 </div>
