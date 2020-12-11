@@ -26,7 +26,7 @@ $(document).ready(function() {
                             $.APP.t1 = $.APP.d1.getTime();
                             // if countdown add ms based on seconds in textfield
                             if ($.APP.dir === 'cd') {
-                                $.APP.t1 += parseInt($('#cd_minutes').val())*(60000)/60;
+                                $.APP.t1 += parseInt($('#cd_minutes').val())*(60000);
                             }
                         break;
                     }
