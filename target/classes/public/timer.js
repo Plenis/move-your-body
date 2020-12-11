@@ -26,7 +26,7 @@ $(document).ready(function() {
                             $.APP.t1 = $.APP.d1.getTime();
                             // if countdown add ms based on seconds in textfield
                             if ($.APP.dir === 'cd') {
-                                $.APP.t1 += parseInt($('#cd_minutes').val())*60000;
+                                $.APP.t1 += parseInt($('#cd_minutes').val())*(60000);
                             }
                         break;
                     }
@@ -133,32 +133,27 @@ $(document).ready(function() {
                 }
             }
         });
-        $('#sw_start').live('click', function() {
-            $.APP.startTimer('sw');
-        });
+
         $('#cd_start').live('click', function() {
-            $.APP.startTimer('cd');
+            $.APP.startTimer('cd')+20
+
         });
-        $('#sw_reset,#cd_reset').live('click', function() {
-            $.APP.resetTimer();
-        });
-        $('#sw_pause,#cd_pause').live('click', function() {
-            $.APP.pauseTimer();
-        });
+
+
     })(jQuery);
 });
 
-$( "#stopwatch" ).click(function() {
-  $("#s").toggle();
-  $("#c").hide();
-  $.APP.resetTimer();
-});
 $( "#countdown" ).click(function() {
   $("#c").toggle();
-  $("#s").hide();
   $.APP.resetTimer();
 });
+<<<<<<< HEAD
 //$(document).ready(function() {
 //  $("#c").hide();
 //  $("#s").hide();
 //})
+=======
+$(document).ready(function() {
+  $("#c").hide();
+})
+>>>>>>> e946dde390f7f0e1e3e17d777ad4ea7b17cc6b71

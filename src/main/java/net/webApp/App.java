@@ -25,7 +25,7 @@ public class App {
         if (processBuilder.environment().get("PORT") != null) {
             return Integer.parseInt(processBuilder.environment().get("PORT"));
         }
-        return 4567;
+        return 4566;
     }
 
     static Jdbi getJdbiDatabaseConnection(String defaultJdbcUrl) throws URISyntaxException {
@@ -91,6 +91,11 @@ public class App {
           get("/timer", (request, response) -> {
              return new ModelAndView(player, "timer.handlebars");
           }, new HandlebarsTemplateEngine());
+
+        get("/progress", (request, response) -> {
+            return new ModelAndView(player, "progress.handlebars");
+        }, new HandlebarsTemplateEngine());
+        
 
           get("/move", (request, response) -> {
              return new ModelAndView(player, "move.handlebars");
